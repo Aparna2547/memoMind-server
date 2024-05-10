@@ -20,8 +20,14 @@ Environment variables: Create a .env file in the backend directory and set the f
 
 -Change the database connection if you need in the file 'database.ts'
 - database name: your database name(I given as 'notes')
+
+  
 -host: your host
+
+
 -user: your root
+
+
 -password : your password
 
 
