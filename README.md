@@ -37,7 +37,23 @@ Database Design
 Before running it please make database and tables in your locally.
 
 Creating db : ```CREATE DATABASE NOTEKEEPER; ```
-switching db: USE NOTEKEEPER;
+
+switching db:``` USE NOTEKEEPER;```
+
+
 creating tables
 -userdetails : for storing user details
+```CREATE TABLE userDetails (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);```
+
+- notes : For storing notes
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content VARCHAR(255) NOT NULL
+)
 
