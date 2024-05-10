@@ -51,9 +51,10 @@ CREATE TABLE userDetails (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
-);```
+);
 
-
+```
+```
 CREATE TABLE notes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -62,4 +63,5 @@ CREATE TABLE notes (
     userId INT,
     FOREIGN KEY (userId) REFERENCES userDetails(id)
 )
+```
 
