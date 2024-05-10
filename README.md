@@ -43,6 +43,8 @@ switching db:``` USE NOTEKEEPER;```
 
 creating tables
 -userdetails : for storing user details
+- notes : For storing notes
+  
 ```CREATE TABLE userDetails (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -50,10 +52,13 @@ creating tables
     password VARCHAR(255) NOT NULL
 );```
 
-- notes : For storing notes
+
 CREATE TABLE notes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    content VARCHAR(255) NOT NULL
+    content VARCHAR(255) NOT NULL,
+    createdAt DATETIME,
+    userId INT,
+    FOREIGN KEY (userId) REFERENCES userDetails(id)
 )
 
