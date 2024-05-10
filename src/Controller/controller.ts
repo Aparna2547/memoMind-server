@@ -134,12 +134,12 @@ export const addNote = async (req: Request, res: Response) => {
     }
     const user_id = userRecord.id;
 
-    const createdDate = moment().format('YYYY-MM-DD HH:mm:ss');
+    const createdDate = moment().format("YYYY-MM-DD HH:mm:ss");
 
     // Insert the note into the database
     const [insertedNote]: any = await db.execute(
       `INSERT INTO notes (userId, title, content,createdAt) VALUES (?, ?, ?,?)`,
-      [user_id, title, content,createdDate]
+      [user_id, title, content, createdDate]
     );
 
     res.status(201).json({ message: "Note added successfully" });
@@ -185,7 +185,6 @@ export const getNotes = async (req: Request, res: Response) => {
 
     const totalPages = Math.ceil(docCount / limit);
     console.log(totalPages);
-
 
     let query = `SELECT * FROM notes WHERE userId = ${user_id} AND (title LIKE '%${search}%') ORDER BY createdAt DESC LIMIT ${limit} OFFSET ${skip}`;
 
