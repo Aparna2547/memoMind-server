@@ -8,7 +8,7 @@
 -Typescript
 
 
-## Clone project
+## Clone project : ```https://github.com/Aparna2547/memoMind-server.git```
 
 ## Node Mailer Local Setup Guide
 
