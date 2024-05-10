@@ -45,7 +45,8 @@ creating tables
 -userdetails : for storing user details
 - notes : For storing notes
   
-```CREATE TABLE userDetails (
+```
+CREATE TABLE userDetails (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
