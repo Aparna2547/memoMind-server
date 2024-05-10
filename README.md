@@ -8,6 +8,52 @@
 -Typescript
 
 
+## Clone project
+
+## Node Mailer Local Setup Guide
+
+This guide will help you set up and use Node Mailer to send emails locally using your email account. Node Mailer is a module for Node.js that allows you to send emails easily.-Get the app key of google
+
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed:
+
+- Node.js
+- npm (Node Package Manager)
+
+## Installation
+
+1. Clone or download this repository.
+
+2. Navigate to the project directory in your terminal.
+
+3. Install the required dependencies by running:
+
+
+## Configuration
+
+To send emails using Node Mailer locally, you need to configure your email account settings in the `sendMail.ts` file in the utils folder.
+
+  
+note: password is your google App key
+
+```
+const transporter: nodemailer.Transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "your email here",
+      pass: "password",
+    },
+  });
+
+  const mailOptions: nodemailer.SendMailOptions = {
+    from: "your email here",
+    to: email,
+    subject: "Email verification",
+    text: `${email}, your verification code is: ${verif_code}`,
+  };
+```
 ## Setup
 -Install dependencies: Run npm install in the backend directory to install all required dependencies.
 
