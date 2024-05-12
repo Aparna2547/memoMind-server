@@ -90,9 +90,14 @@ export const signIn = async (req: Request, res: Response) => {
         const token = jwt.sign({ userId: user.email }, process.env.JWT_SECRET, {
           expiresIn: "1d",
         });
+        res.cookie('userJWT',token,{
+          httpOnly: true,
+          secure: true,
+          sameSite: 'none',
+          maxAge: 30 * 24 * 60 * 60 * 1000,
+      });
         res
           .status(201)
-          .cookie("userJWT", token)
           .json({ message: "Logined successfully", token });
       } else {
         res.status(401).json({ message: "Invalid credentials" });

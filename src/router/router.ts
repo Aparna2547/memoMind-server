@@ -1,5 +1,5 @@
 import express from "express"
-import { addNote, editNote, getNotes, signIn, signUp, trashNote, verifyOtp ,restoreNote,deleteNote, getSingleNote} from "../Controller/controller"
+import { addNote, editNote, getNotes, signIn, signUp, trashNote, verifyOtp ,restoreNote,deleteNote, getSingleNote, logout} from "../Controller/controller"
 const router = express.Router()
 
 
@@ -14,4 +14,5 @@ router.put('/editnote',editNote)
 router.put('/trashnote',trashNote)
 router.put('/restorenote',restoreNote)
 router.delete('/deletenote',deleteNote)
+router.get('/logout',logout)
 export default router
