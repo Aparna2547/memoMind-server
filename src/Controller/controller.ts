@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import db from "../config/database";
+import {db} from "../../server";
 import genOtp from "../utils/genOtp";
 import sendMail from "../utils/sendMail";
 import bcrypt from "bcrypt";
@@ -108,8 +108,12 @@ export const signIn = async (req: Request, res: Response) => {
 export const addNote = async (req: Request, res: Response) => {
   try {
     const { title, content } = req.body;
+    console.log(req.body);
+    
     let userId;
     const token = req.cookies.userJWT;
+    console.log(token);
+    
 
     if (token) {
       const decoded = jwt.verify(
@@ -120,19 +124,19 @@ export const addNote = async (req: Request, res: Response) => {
       userId = decoded.userId;
     }
 
-    // Retrieve the user's ID based on their email
     const [userData]: any = await db.execute(
       `SELECT id FROM userDetails WHERE email = ?`,
       [userId]
     );
 
-    //   // Extract the user ID from the userData result
     const userRecord = userData[0];
 
     if (!userRecord) {
       return res.status(404).json({ error: "User not found" });
     }
     const user_id = userRecord.id;
+    console.log(user_id);
+    
 
     const createdDate = moment().format("YYYY-MM-DD HH:mm:ss");
 
@@ -192,7 +196,6 @@ export const getNotes = async (req: Request, res: Response) => {
       // `SELECT * FROM notes WHERE userId=?`,[user_id]
       query
     );
-    console.log("fdfsf");
     res.status(200).json({ allNotes, totalPages });
   } catch (error) {
     res.status(500).json({ error: "Something went wrong" });
