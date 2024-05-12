@@ -8,7 +8,6 @@ exports.db = void 0;
 const express_1 = __importDefault(require("express"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
-// import db from "./src/config/database";
 const router_1 = __importDefault(require("./src/router/router"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const promise_1 = __importDefault(require("mysql2/promise"));
@@ -40,7 +39,7 @@ exports.db = promise_1.default.createPool({
 exports.db.getConnection()
     .then((connection) => {
     "Connected to MySQL as ID " + connection.threadId;
-    connection.release(); // Release the connection after obtaining the threadId
+    connection.release();
 })
     .catch((err) => {
     console.error("Error connecting to MySQL: " + err.stack);

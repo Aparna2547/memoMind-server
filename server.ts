@@ -2,7 +2,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-// import db from "./src/config/database";
 import router from "./src/router/router";
 import dotenv from "dotenv";
 import mysql from 'mysql2/promise'
@@ -46,7 +45,7 @@ export const db = mysql.createPool({
 db.getConnection()
   .then((connection) => {
     "Connected to MySQL as ID " + connection.threadId;
-    connection.release(); // Release the connection after obtaining the threadId
+    connection.release(); 
   })
   .catch((err) => {
     console.error("Error connecting to MySQL: " + err.stack);
