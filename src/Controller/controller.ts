@@ -52,12 +52,13 @@ export const verifyOtp = async (req: Request, res: Response) => {
         throw new Error("JWT_SECRET is not defined in environment variables");
       }
 
+      let token =jwt.sign({ userId: userDetails._id }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      })
       res.status(200).json({
         status: true,
         message: "User registered successfully",
-        token: jwt.sign({ userId: userDetails._id }, process.env.JWT_SECRET, {
-          expiresIn: "1d",
-        }),
+        token: token,
       });
     }
   } catch (error) {
@@ -92,7 +93,7 @@ export const signIn = async (req: Request, res: Response) => {
         });
         res.cookie('userJWT',token,{
           httpOnly: true,
-          secure: true,
+          secure: false,
           sameSite: 'none',
           maxAge: 30 * 24 * 60 * 60 * 1000,
       });
